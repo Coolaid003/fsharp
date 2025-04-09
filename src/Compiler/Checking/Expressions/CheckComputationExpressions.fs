@@ -2752,14 +2752,14 @@ and TranslateComputationExpressionBind
                     false,
                     consumePat.Range,
                     [
-                        SynMatchClause(consumePat, None, holeFill, innerRange, DebugPointAtTarget.Yes, SynMatchClauseTrivia.Zero)
+                        SynMatchClause(consumePat, None, holeFill, bindRange, DebugPointAtTarget.Yes, SynMatchClauseTrivia.Zero)
                     ],
                     DebugPointAtBinding.NoneAtInvisible,
                     innerRange
                 )
 
             let bindCall =
-                mkSynCall bindName bindRange (bindArgs @ [ consumeExpr ]) ceenv.builderValName
+                mkSynCall bindName holeFill.Range (bindArgs @ [ consumeExpr ]) ceenv.builderValName
 
             translatedCtxt (bindCall |> addBindDebugPoint))
 
